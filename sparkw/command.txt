@@ -1,0 +1,1 @@
+docker run -d --name master --cpus="4" -m 10g -p 8083:8083 -p 8082:8082 bumory1987/spark3:0.02
