@@ -1,15 +1,15 @@
 # Use the official Nginx base image
 # FROM bumory1987/flink:0.001
-FROM bumory1987/spark3:con
+FROM bumory1987/storage:client
 
 ENTRYPOINT ["/bin/bash"]
 
 # Set environment variables for Kafka
 
-# ENV SPARK_MASTER_IP_SUNG=localhost
-# ENV SPARK_MASTER_PORT_SUNG=7077
-# ENV SPARK_MASTER_WEB_PORT_SUNG=8083
-# ENV SPARK_MASTER_WOKER_WEB_SUNG=8090
+
+ENV SPARK_WORKER_WEBUI_PORT=8090
+
+
 
 # Switch to a non-root user if necessary
 USER sung

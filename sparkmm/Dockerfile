@@ -1,19 +1,16 @@
 # Use the official Nginx base image
 # FROM bumory1987/flink:0.001
-FROM bumory1987/flink:0.4
+# FROM  bumory1987/sparks:bbasic
 
+FROM bumory1987/sparks:wp
 ENTRYPOINT ["/bin/bash"]
 
 # Set environment variables for Kafka
-ENV MASTER=localhost
-ENV WORKER=localhost
-ENV MASTER_PORT=8081
-ENV RPC_PORT=localhost
-ENV JAVA_HOME=/home/sung/jdk11
-ENV PATH=$PATH:$JAVA_HOME/bin
-
-
-
+ENV SPARK_MASTER_HOST=localhost
+ENV SPARK_MASTER_PORT=7077
+ENV SPARK_MASTER_WEBUI_PORT=8083
+ENV SPARK_WORKER_WEBUI_PORT=8090
+ENV STORAGE="empty"
 # Switch to a non-root user if necessary
 USER sung
 
@@ -32,9 +29,9 @@ WORKDIR /home/sung
 # # Run Kafka commands
 
 # Expose any necessary ports
-EXPOSE 8081
+EXPOSE 8083
+EXPOSE 7077
 EXPOSE 22
-EXPOSE 6123
 
 # Command to run Kafka when the container starts
 CMD ["-c", "python3 /home/sung/generate.py; echo '1234' | sudo -S service supervisor start"]

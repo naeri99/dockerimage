@@ -1,16 +1,13 @@
 # Use the official Nginx base image
 # FROM bumory1987/flink:0.001
-FROM bumory1987/flink:0.4
+FROM bumory1987/redis:bbb
 
 ENTRYPOINT ["/bin/bash"]
 
 # Set environment variables for Kafka
-ENV MASTER=localhost
-ENV WORKER=localhost
-ENV MASTER_PORT=8081
-ENV RPC_PORT=localhost
-ENV JAVA_HOME=/home/sung/jdk11
-ENV PATH=$PATH:$JAVA_HOME/bin
+
+ENV SERVER_LIST=redis-1,redis-2,redis-3
+ENV REPLICA=0
 
 
 
@@ -32,9 +29,8 @@ WORKDIR /home/sung
 # # Run Kafka commands
 
 # Expose any necessary ports
-EXPOSE 8081
+EXPOSE 7000
 EXPOSE 22
-EXPOSE 6123
 
 # Command to run Kafka when the container starts
 CMD ["-c", "python3 /home/sung/generate.py; echo '1234' | sudo -S service supervisor start"]

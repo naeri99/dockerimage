@@ -1,6 +1,6 @@
 # Use the official Nginx base image
 # FROM bumory1987/flink:0.001
-FROM bumory1987/flink:0.005
+FROM bumory1987/flink:0.1
 
 ENTRYPOINT ["/bin/bash"]
 

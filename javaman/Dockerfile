@@ -1,4 +1,4 @@
-FROM bumory1987/ubuntu:aws3
+FROM bumory1987/backend:pre
 
 ENTRYPOINT ["/bin/bash"]
 
